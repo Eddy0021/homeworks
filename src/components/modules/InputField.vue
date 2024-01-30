@@ -1,10 +1,14 @@
 <template>
-  <input :type="type" :placeholder="placeholder" :disabled="disabled" class="custom-input" />
+  <input @input="updateInput" :type="type" :placeholder="placeholder" :disabled="disabled" class="custom-input" />
 </template>
 
 <script>
 export default {
   props: {
+    modelValue: {
+      type: [String, Number],
+      default: '',
+    },
     type: {
       type: String,
       default: "text",
@@ -18,6 +22,11 @@ export default {
       default: false,
     },
   },
+  methods: {
+    updateInput(event) {
+      this.$emit('update:modelValue', event.target.value);
+    },
+  },
 };
 </script>
 
@@ -25,7 +34,9 @@ export default {
 .custom-input {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
+  background-color: #4242428e;
+  color: white;
+  border: none;
   border-radius: 4px;
   font-size: 16px;
   box-sizing: border-box;
