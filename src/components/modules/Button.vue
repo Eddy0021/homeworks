@@ -1,6 +1,6 @@
 <template>
   <button :class="typeClass" :disabled="disabled">
-    <slot></slot>
+    {{ title }}
   </button>
 </template>
 
@@ -15,6 +15,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    title: {
+      type: String,
+      default: "button"
+    }
   },
   computed: {
     typeClass() {
@@ -33,13 +37,13 @@ button{
 }
 
 .button-primary {
-  background-color: rgb(105, 105, 199);
+  background-color: #F65261;
   color: white;
 }
 
 .button-secondary {
-  background-color: lightgray;
-  color: black;
+  background-color: #4242428f;
+  color: white;
 }
 
 .button-disabled {
