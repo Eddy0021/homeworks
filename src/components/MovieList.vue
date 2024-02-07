@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useSearchStore } from '../stores/searchStore';
 import { useSearch } from "../composables/useSearch";
-import { toRefs, watch, onMounted } from 'vue';
+import { toRefs, watch, onMounted, watchEffect } from 'vue';
 import MovieCard from './MovieCard.vue';
 import Button from '../components/modules/Button.vue'; 
 import InputField from '../components/modules/InputField.vue'; 
@@ -12,27 +12,15 @@ const emit = defineEmits(['selectedMovie']);
 const searchStore = useSearchStore();
 const { movies, getMovies } = useSearch();
 
-const { searchQuery, searchBy, sortBy } = toRefs(searchStore);
+const search = () => {   
+  getMovies(searchStore.getSearchQuery, searchStore.getSearchBy, searchStore.getSortBy);
+  searchStore.setMoviesLength(movies.value.length);
+};
 
-watch(() => searchStore.getSearchQuery, (newSearchQuery) => {
-    searchQuery.value = newSearchQuery;
-    search();
-});
-
-watch(() => searchStore.getSearchBy, (newSearchBy) => {
-    searchBy.value = newSearchBy;
-    search();
-});
-
-watch(() => searchStore.getSortBy, (newSortBy) => {
-  sortBy.value = newSortBy;
+watchEffect(() => {
   search();
 });
 
-const search = () => {   
-  getMovies(searchQuery.value, searchBy.value, sortBy.value);
-  searchStore.setMoviesLength(movies.value.length);
-};
 onMounted(() => {
     search();
 });
@@ -62,27 +50,6 @@ const selectMovie = (movie: any) => {
 
 </template>
 
-<style lang="scss" scoped>
-.main{
-    background-color: #232323;
-    padding-left: 1.5rem;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-
-    .movie-list{
-      display: flex;
-      width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .movie-warning{
-        height: 546px;
-        color: white;
-        font-size: x-large;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-}
+<style scoped>
+@import '../assets/stylesheets/components/MovieList.scss';
 </style>

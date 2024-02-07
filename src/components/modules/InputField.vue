@@ -31,19 +31,5 @@ export default {
 </script>
 
 <style scoped>
-.custom-input {
-  width: 100%;
-  padding: 10px;
-  background-color: #4242428e;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
-.custom-input:disabled {
-  background-color: #f0f0f0;
-  cursor: not-allowed;
-}
+@import '../../assets/stylesheets/components/SubComponents/InputField.scss';
 </style>

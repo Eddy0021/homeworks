@@ -25,13 +25,5 @@ export default {
 </script>
 
 <style scoped>
-.checkbox-container {
-  display: flex;
-  align-items: center;
-}
-
-.checkbox-input {
-  margin-right: 8px;
-}
-
+@import '../../assets/stylesheets/components/SubComponents/ToggleSwitch.scss';
 </style>

@@ -39,27 +39,6 @@ watch(() => searchStore.getMoviesLength, (newLength) => {
 
 </script>
 
-<style lang="scss" scoped>
-$secondary-color: #555555;
-
-.nav-bar {
-  display: flex;
-  justify-content: space-evenly;
-  background-color: $secondary-color;
-  padding: 1rem 0 1rem 0;
-  color: white;
-
-  &__body{
-    display: flex;
-    align-items: center;
-
-    &--sort-label{
-        margin-right: 1rem;
-    }
-  }
-
-  p {
-    font-weight: bold;
-  }
-}
+<style scoped>
+@import '../assets/stylesheets/components/NavBar.scss';
 </style>

@@ -37,12 +37,5 @@ onMounted(() =>{
 </template>
 
 <style lang="scss" scoped>
-$primary-color: #F65261;
-$secondary-color: #555555;
-
-footer {
-    background-color: $secondary-color;
-    padding: 1rem 0 1rem 0;
-    text-align: center;
-}
+@import '../assets/stylesheets/views/HomePage.scss';
 </style>

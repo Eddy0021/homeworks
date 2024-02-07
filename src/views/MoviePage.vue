@@ -43,35 +43,6 @@ const handleClose = () => {
 
 </template>
 
-<style lang="scss" scoped>
-$primary-color: #F65261;
-$secondary-color: #555555;
-
-$secondary-color: #555555;
-
-.nav-bar {
-  display: flex;
-  background-color: $secondary-color;
-  padding: 1rem 0 1rem 3rem;
-  color: white;
-
-  &__body{
-    display: flex;
-    align-items: center;
-
-    &--sort-label{
-        margin-right: 1rem;
-    }
-  }
-
-  p {
-    font-weight: bold;
-  }
-}
-
-footer {
-    background-color: $secondary-color;
-    padding: 1rem 0 1rem 0;
-    text-align: center;
-}
+<style scoped>
+@import '../assets/stylesheets/views/MoviePage.scss';
 </style>
