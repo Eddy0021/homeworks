@@ -39,20 +39,5 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.dropdown-container {
-  margin-bottom: 16px;
-}
-
-.dropdown-label {
-  display: block;
-  margin-bottom: 8px;
-}
-
-.dropdown-select {
-  width: 200px;
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 16px;
-}
+@import '../../assets/stylesheets/components/SubComponents/Dropdown.scss';
 </style>

@@ -1,0 +1,22 @@
+.main{
+    background-color: #232323;
+    padding-left: 1.5rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .movie-list{
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
+
+    .movie-warning{
+        height: 546px;
+        color: white;
+        font-size: x-large;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
