@@ -1,8 +1,8 @@
 <template>
-  <section class="nav-bar">
+  <section :class="$style['nav-bar']">
     <p>{{ movies }} movie found</p>
-    <div class="nav-bar__body">
-      <span class="nav-bar__body--sort-label">SORT BY</span>
+    <div :class="$style['nav-bar__body']">
+      <span :class="$style['nav-bar__body--sort-label']">SORT BY</span>
       <Button
         @click="setSortBy('releaseDate')"
         title="RELEASE DATE"
@@ -39,6 +39,6 @@ watch(() => searchStore.getMoviesLength, (newLength) => {
 
 </script>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/components/NavBar.scss';
 </style>

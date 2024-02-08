@@ -1,12 +1,12 @@
 <template>
-    <div class="movie-card">
-      <div class="rating-cover">
-        <div class="rating-container">
-          <div class="rating-circle">
-            <span class="rating-number">{{ movie.imdbRating }} / 10</span>
+    <div :class="$style['movie-card']">
+      <div :class="$style['rating-cover']">
+        <div :class="$style['rating-container']">
+          <div :class="$style['rating-circle']">
+            <span :class="$style['rating-number']">{{ movie.imdbRating }} / 10</span>
           </div>
         </div>
-        <div class="rating-description">{{ movie.storyline }}</div>
+        <div :class="$style['rating-description']">{{ movie.storyline }}</div>
       </div>
       <img
         v-if="!imageError"
@@ -16,13 +16,13 @@
       />
       <img v-else v-lazyload="noIMG" :alt="movie.title" />
 
-      <div class="movie-info">
-        <div class="movie-title">
+      <div :class="$style['movie-info']">
+        <div :class="$style['movie-title']">
           <h3>{{ movie.title }}</h3>
           <p>{{ movie.genres.join(', ') }}</p>
         </div>
 
-        <div class="movie-release-date">
+        <div :class="$style['movie-release-date']">
           {{ movie.year }}
         </div>
       </div>
@@ -41,6 +41,6 @@ const handleImageError = () => {
 };
 </script>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/components/MovieCard.scss';
 </style>

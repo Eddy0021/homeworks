@@ -32,16 +32,16 @@ const selectMovie = (movie: any) => {
 
 <template>
 
-    <section class="main">
+    <section :class="$style['main']">
 
-    <div class="container">
-        <div v-if="movies.length > 0" class="movie-list">
+    <div :class="$style['container']">
+        <div v-if="movies.length > 0" :class="$style['movie-list']">
             <MovieCard 
               v-for="movie in movies" :key="movie.id" 
               :movie="movie" 
               @click="selectMovie(movie)"/>
         </div>
-        <div v-else class="movie-warning">
+        <div v-else :class="$style['movie-warning']">
           <h1 >No films found</h1>
         </div>
     </div>
@@ -50,6 +50,6 @@ const selectMovie = (movie: any) => {
 
 </template>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/components/MovieList.scss';
 </style>
