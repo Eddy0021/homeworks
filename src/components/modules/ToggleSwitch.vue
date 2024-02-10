@@ -1,7 +1,7 @@
 <template>
   <div class="checkbox-container">
-    <input type="checkbox" :checked="checked" :disabled="disabled" @input="$emit('update:checked', $event.target.checked)" class="checkbox-input" />
-    <label v-if="label" class="checkbox-label">{{ label }}</label>
+    <input type="checkbox" :checked="checked" :disabled="disabled" @input="$emit('update:checked', $event.target.checked)" :class="$style['checkbox-input']" />
+    <label v-if="label" :class="$style['checkbox-label']">{{ label }}</label>
   </div>
 </template>
 
@@ -24,6 +24,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style module>
 @import '../../assets/stylesheets/components/SubComponents/ToggleSwitch.scss';
 </style>

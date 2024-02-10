@@ -22,27 +22,27 @@ const setSearchBy = (type: 'title' | 'genre') => {
 </script>
 
 <template>
-  <header class="banner">
-    <img src="@/assets/background.png" alt="" class="banner__background" />
-    <div class="container">
-      <div class="logo-placeholder">
+  <header :class="$style['banner']">
+    <img src="@/assets/background.png" alt="" :class="$style['banner__background']" />
+    <div :class="$style['container']">
+      <div :class="$style['logo-placeholder']">
         <LogoText />
       </div>
 
-      <div class="search">
-        <div class="search__title">
+      <div :class="$style['search']">
+        <div :class="$style['search__title']">
           <h2>FIND YOUR MOVIE</h2>
         </div>
-        <div class="search__field">
+        <div :class="$style['search__field']">
           <InputField
             v-model="searchQuery"
             @keydown.enter="search"
             placeholder="Search"
-            class="search-field__input"
+            :class="$style['search-field__input']"
           />
           <Button @click="search" title="SEARCH" type="primary" />
         </div>
-        <div class="search-by">
+        <div :class="$style['search-by']">
           <span>SEARCH BY</span>
           <Button
             @click="setSearchBy('title')"
@@ -60,6 +60,6 @@ const setSearchBy = (type: 'title' | 'genre') => {
   </header>
 </template>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/components/Banner.scss';
 </style>

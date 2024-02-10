@@ -1,5 +1,5 @@
 <template>
-  <button :class="typeClass" :disabled="disabled">
+  <button :class="$style[typeClass]" :disabled="disabled">
     {{ title }}
   </button>
 </template>
@@ -28,6 +28,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style module>
 @import '../../assets/stylesheets/components/SubComponents/Button.scss';
 </style>

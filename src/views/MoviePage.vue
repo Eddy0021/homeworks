@@ -31,7 +31,7 @@ const handleClose = () => {
       @close="handleClose"
     />
 
-    <section class="nav-bar">
+    <section :class="$style['nav-bar']">
         <h2>Films by: {{ movie.genres[0] }}</h2>      
     </section>
 
@@ -43,6 +43,6 @@ const handleClose = () => {
 
 </template>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/views/MoviePage.scss';
 </style>

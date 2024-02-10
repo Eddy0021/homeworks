@@ -12,17 +12,17 @@ const handleImageError = () => {
 </script>
 
 <template>
-    <header class="banner">
-        <img src="@/assets/background.png" alt="" class="banner__background" />
+    <header :class="$style['banner']">
+        <img src="@/assets/background.png" alt="" :class="$style['banner__background']" />
 
-        <div class="container">
-            <div class="logo-placeholder">
+        <div :class="$style['container']">
+            <div :class="$style['logo-placeholder']">
                 <LogoText />
-                <span @click="$emit('close')" class="banner-search"><img src="../assets/search.svg" alt="search"></span>
+                <span @click="$emit('close')" :class="$style['banner-search']"><img src="../assets/search.svg" alt="search"></span>
             </div>
 
-            <section class="movie-section">
-              <div class="movie">
+            <section :class="$style['movie-section']">
+              <div :class="$style['movie']">
                   <img
                       v-if="!imageError"
                       v-lazyload="movie.posterurl"
@@ -30,17 +30,17 @@ const handleImageError = () => {
                       @error="handleImageError"
                     />
                     <img v-else v-lazyload="noIMG" :alt="movie.title" />
-                  <div class="movie-details">
-                      <div class="movie-title">
+                  <div :class="$style['movie-details']">
+                      <div :class="$style['movie-title']">
                           <h1>{{ movie.title }}</h1>
-                          <p class="movie-rating">{{ movie.imdbRating }}</p>
+                          <p :class="$style['movie-rating']">{{ movie.imdbRating }}</p>
                       </div>
-                      <p class="movie-genres">{{ movie.genres.join(' ,') }}</p>
-                      <div class="movie-info">
+                      <p :class="$style['movie-genres']">{{ movie.genres.join(' ,') }}</p>
+                      <div :class="$style['movie-info']">
                           <p>{{ movie.year }}</p>
                           <p>{{ movie.duration.split("PT")[1] }}</p>
                       </div>
-                      <p class="movie-description">{{ movie.storyline }}</p>
+                      <p :class="$style['movie-description']">{{ movie.storyline }}</p>
                   </div>
               </div>
             </section>
@@ -48,6 +48,6 @@ const handleImageError = () => {
     </header>
 </template>
 
-<style scoped>
+<style module>
 @import '../assets/stylesheets/components/MovieDetails.scss';
 </style>

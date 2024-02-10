@@ -1,5 +1,5 @@
 <template>
-  <div :class="alertClass" v-if="show">
+  <div :class="$style[alertClass]" v-if="show">
     <p>{{ message }}</p>
     <button v-if="closable" @click="closeAlert" class="close-button">Close</button>
   </div>
@@ -40,7 +40,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style module>
 @import '../../assets/stylesheets/components/SubComponents/Alter.scss';
 </style>
 

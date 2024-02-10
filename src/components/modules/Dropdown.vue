@@ -1,7 +1,7 @@
 <template>
   <div class="dropdown-container">
-    <label v-if="label" class="dropdown-label">{{ label }}</label>
-    <select v-model="selectedOption" :disabled="disabled" class="dropdown-select">
+    <label v-if="label" :class="$style['dropdown-label']">{{ label }}</label>
+    <select v-model="selectedOption" :disabled="disabled" :class="$style['dropdown-select']">
       <option v-for="option in options" :key="option.id" :value="option.value">{{ option.value }}</option>
     </select>
   </div>
@@ -38,6 +38,6 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style module>
 @import '../../assets/stylesheets/components/SubComponents/Dropdown.scss';
 </style>

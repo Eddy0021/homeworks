@@ -1,5 +1,5 @@
 <template>
-  <input @input="updateInput" :type="type" :placeholder="placeholder" :disabled="disabled" class="custom-input" />
+  <input @input="updateInput" :type="type" :placeholder="placeholder" :disabled="disabled" :class="$style['custom-input']" />
 </template>
 
 <script>
@@ -30,6 +30,6 @@ export default {
 };
 </script>
 
-<style scoped>
+<style module>
 @import '../../assets/stylesheets/components/SubComponents/InputField.scss';
 </style>

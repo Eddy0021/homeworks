@@ -36,6 +36,6 @@ onMounted(() =>{
 
 </template>
 
-<style lang="scss" scoped>
+<style module>
 @import '../assets/stylesheets/views/HomePage.scss';
 </style>
