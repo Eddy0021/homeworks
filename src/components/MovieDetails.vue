@@ -18,25 +18,30 @@ const handleImageError = () => {
         <div :class="$style['container']">
             <div :class="$style['logo-placeholder']">
                 <LogoText />
-                <span @click="$emit('close')" :class="$style['banner-search']"><img src="../assets/search.svg" alt="search"></span>
+                <span @click="this.$router.push('/')" :class="$style['banner-search']"><img src="../assets/search.svg" alt="search"></span>
             </div>
 
             <section :class="$style['movie-section']">
-              <div :class="$style['movie']">
+              <div name="movie" :class="$style['movie']">
                   <img
                       v-if="!imageError"
                       v-lazyload="movie.posterurl"
                       :alt="movie.title"
+                      :key="movie.id"
                       @error="handleImageError"
                     />
-                    <img v-else v-lazyload="noIMG" :alt="movie.title" />
+                    <img 
+                        v-else v-lazyload="noIMG" 
+                        :alt="movie.title" 
+                        :key="movie.id" 
+                    />
                   <div :class="$style['movie-details']">
-                      <div :class="$style['movie-title']">
+                      <div name="movie-title" :class="$style['movie-title']">
                           <h1>{{ movie.title }}</h1>
                           <p :class="$style['movie-rating']">{{ movie.imdbRating }}</p>
                       </div>
-                      <p :class="$style['movie-genres']">{{ movie.genres.join(' ,') }}</p>
-                      <div :class="$style['movie-info']">
+                      <p name="movie-genres" :class="$style['movie-genres']">{{ movie.genres.join(' ,') }}</p>
+                      <div name="movie-info" :class="$style['movie-info']">
                           <p>{{ movie.year }}</p>
                           <p>{{ movie.duration.split("PT")[1] }}</p>
                       </div>

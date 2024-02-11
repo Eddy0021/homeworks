@@ -27,11 +27,11 @@ describe('MovieDetails', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.movie-title h1').text()).toBe(movie.title);
-    expect(wrapper.find('.movie-rating').text()).toBe(movie.imdbRating);
-    expect(wrapper.find('.movie-genres').text()).toBe(movie.genres.join(' ,'));
-    expect(wrapper.find('.movie-info p:first-child').text()).toBe(movie.year);
-    expect(wrapper.find('.movie-info p:last-child').text()).toBe('2H30M');
+    expect(wrapper.find('div[name="movie-title"] h1').text()).toBe(movie.title);
+    expect(wrapper.find('div[name="movie-title"] p').text()).toBe(movie.imdbRating);
+    expect(wrapper.find('p[name="movie-genres"]').text()).toBe(movie.genres.join(' ,'));
+    expect(wrapper.find('div[name="movie-info"] p:first-child').text()).toBe(movie.year);
+    expect(wrapper.find('div[name="movie-info"] p:last-child').text()).toBe('2H30M');
   });
 
   it('handles image error correctly', async () => {
@@ -53,7 +53,7 @@ describe('MovieDetails', () => {
 
     await wrapper.vm.$nextTick();
 
-    const movieImage = wrapper.find('.movie img');
+    const movieImage = wrapper.find('div[name="movie"] img');
     expect(movieImage.exists()).toBe(true);
 
     if (wrapper.vm.imageError) {

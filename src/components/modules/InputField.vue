@@ -1,5 +1,5 @@
 <template>
-  <input @input="updateInput" :type="type" :placeholder="placeholder" :disabled="disabled" :class="$style['custom-input']" />
+  <input :value="modelValue" @input="updateInput" :type="type" :placeholder="placeholder" :disabled="disabled" :class="$style['custom-input']" />
 </template>
 
 <script>

@@ -1,17 +1,30 @@
 <script setup lang="ts">
-import { ref, type Ref,computed, watchEffect } from 'vue';
+import { ref, type Ref,computed, watchEffect, onMounted  } from 'vue';
 import LogoText from './modules/LogoText.vue';
 import InputField from './modules/InputField.vue';
 import Button from './modules/Button.vue';
 
 import { useSearchStore } from '../stores/searchStore';
+import { useRoute, useRouter  } from 'vue-router';
 
 const searchStore = useSearchStore();
+const route = useRoute();
+const router = useRouter();
 
-const searchQuery = ref("");
+const query = ref('');
+
+if(route){
+  query.value = route.query.search != null ? route.query.search : '';
+}
+
+const searchQuery = ref('');
 const searchBy = ref('title');
 
 const search = () => {
+  if(route){
+    router.push({ query: { ...route.query, search: searchQuery.value } });
+  }
+  
   searchStore.setSearchQuery(searchQuery.value);
 };
 
@@ -19,6 +32,14 @@ const setSearchBy = (type: 'title' | 'genre') => {
   searchBy.value = type;
   searchStore.setSearchBy(type);
 };
+
+watchEffect(() => {
+  searchQuery.value = query.value || '';
+});
+
+onMounted(() => {
+  searchQuery.value = query.value || '';
+});
 </script>
 
 <template>
@@ -33,7 +54,7 @@ const setSearchBy = (type: 'title' | 'genre') => {
         <div :class="$style['search__title']">
           <h2>FIND YOUR MOVIE</h2>
         </div>
-        <div :class="$style['search__field']">
+        <div name="search-field" :class="$style['search__field']">
           <InputField
             v-model="searchQuery"
             @keydown.enter="search"
@@ -42,7 +63,7 @@ const setSearchBy = (type: 'title' | 'genre') => {
           />
           <Button @click="search" title="SEARCH" type="primary" />
         </div>
-        <div :class="$style['search-by']">
+        <div name="search-by" :class="$style['search-by']">
           <span>SEARCH BY</span>
           <Button
             @click="setSearchBy('title')"

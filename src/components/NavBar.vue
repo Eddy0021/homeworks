@@ -1,7 +1,7 @@
 <template>
   <section :class="$style['nav-bar']">
     <p>{{ movies }} movie found</p>
-    <div :class="$style['nav-bar__body']">
+    <div name="nav-bar__body" :class="$style['nav-bar__body']">
       <span :class="$style['nav-bar__body--sort-label']">SORT BY</span>
       <Button
         @click="setSortBy('releaseDate')"

@@ -26,9 +26,9 @@ describe('MovieCard', () => {
 
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.movie-title h3').text()).toBe(movie.title);
-    expect(wrapper.find('.movie-title p').text()).toBe(movie.genres.join(', '));
-    expect(wrapper.find('.movie-release-date').text()).toBe(movie.year);
+    expect(wrapper.find('div[name="movie-title"] h3').text()).toBe(movie.title);
+    expect(wrapper.find('div[name="movie-title"] p').text()).toBe(movie.genres.join(', '));
+    expect(wrapper.find('div[name="movie-release-date"]').text()).toBe(movie.year);
   });
 
   it('handles image error correctly', async () => {
@@ -49,7 +49,7 @@ describe('MovieCard', () => {
 
     await wrapper.vm.$nextTick();
 
-    const movieImage = wrapper.find('.movie-card img');
+    const movieImage = wrapper.find('div[name="movie-card"] img');
 
     expect(movieImage.exists()).toBe(true);
 

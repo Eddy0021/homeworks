@@ -5,13 +5,7 @@ import MoviList from '../components/MovieList.vue';
 
 import LogoText from '../components/modules/LogoText.vue'; 
 import { useSearchStore } from '../stores/searchStore';
-import { onMounted } from 'vue';
-
-const emit = defineEmits(['selectedMovie']);
-
-const handleOpenDetails = (movie: any) => {
-  emit('selectedMovie', movie)
-}
+import { onMounted, watch } from 'vue';
 
 const searchStore = useSearchStore();
 
@@ -20,6 +14,7 @@ onMounted(() =>{
     searchStore.setSearchBy('title');
     searchStore.setSortBy("releaseDate");
 })
+
 </script>
 
 <template>
@@ -28,7 +23,7 @@ onMounted(() =>{
 
     <NavBar />
 
-    <MoviList @selectedMovie="handleOpenDetails" />
+    <MoviList />
 
     <footer>
         <LogoText />
