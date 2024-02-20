@@ -1,5 +1,5 @@
 import { createPinia, setActivePinia } from 'pinia'
-import { describe, it, expect, beforeEach } from 'vitest'
+import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils';
 import MovieList from '../MovieList.vue';
 import { useSearchStore } from '../../stores/searchStore'
@@ -31,23 +31,29 @@ describe('MovieList', () => {
         expect(warningMessage).toBe('No films found');
       });
     
-      it('emits "selectedMovie" event when a movie card is clicked', async () => {
-        const wrapper = mount(MovieList);
+      it('navigates to the movie details page when a movie card is clicked', async () => {
+        const routerMock = {
+          push: vi.fn(),
+        };
     
-        await wrapper.vm.$nextTick();
-    
-        const movieCard = wrapper.findComponent({ name: 'MovieCard' });
-        await movieCard.trigger('click');
-    
-        await wrapper.vm.$nextTick();
-    
-        const emittedEvent: any = wrapper.emitted('selectedMovie');
+        const wrapper = mount(MovieList, {
+          global: {
+            mocks: {
+              $router: routerMock,
+            },
+          },
+        });
 
-        expect(emittedEvent).toBeTruthy();
+      await wrapper.vm.$nextTick();
 
-        if (emittedEvent) {
-            const emittedData = emittedEvent[0][0].id;
-            expect(emittedData).toEqual(97);
-        }
+      const movieCard = wrapper.findComponent({ name: 'MovieCard' });
+      await movieCard.trigger('click');
+
+      // Assuming you have access to the router in your component
+      const router = wrapper.vm.$router;
+
+      // Verify that the router navigated to the correct route
+      expect(router.currentRoute.value.name).toBe('movie');
+      expect(router.currentRoute.value.params.id).toBe(97); // Adjust the expected ID accordingly
     });
 })

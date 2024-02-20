@@ -1,5 +1,5 @@
 <template>
-    <div :class="$style['movie-card']">
+    <div name="movie-card" :class="$style['movie-card']">
       <div :class="$style['rating-cover']">
         <div :class="$style['rating-container']">
           <div :class="$style['rating-circle']">
@@ -17,12 +17,12 @@
       <img v-else v-lazyload="noIMG" :alt="movie.title" />
 
       <div :class="$style['movie-info']">
-        <div :class="$style['movie-title']">
+        <div name="movie-title" :class="$style['movie-title']">
           <h3>{{ movie.title }}</h3>
           <p>{{ movie.genres.join(', ') }}</p>
         </div>
 
-        <div :class="$style['movie-release-date']">
+        <div name="movie-release-date" :class="$style['movie-release-date']">
           {{ movie.year }}
         </div>
       </div>

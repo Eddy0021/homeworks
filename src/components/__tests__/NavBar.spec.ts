@@ -21,7 +21,7 @@ describe('NavBar', () => {
         const wrapper = mount(NavBar);
         const store = useSearchStore();
     
-        await wrapper.find('.nav-bar__body').findAll('button')[0].trigger('click');
+        await wrapper.find('div[name="nav-bar__body"]').findAll('button')[0].trigger('click');
         expect(store.getSortBy).toBe('releaseDate');
       });
     
@@ -29,7 +29,7 @@ describe('NavBar', () => {
         const wrapper = mount(NavBar);
         const store = useSearchStore();
     
-        await wrapper.find('.nav-bar__body').findAll('button')[1].trigger('click');
+        await wrapper.find('div[name="nav-bar__body"]').findAll('button')[1].trigger('click');
         expect(store.getSortBy).toBe('rating');
       });
 

@@ -29,7 +29,7 @@ describe('Banner', () => {
     const store = useSearchStore();
 
     await wrapper.get('input').setValue("Interstellar");
-    await wrapper.find('.search__field').get('button').trigger('click');
+    await wrapper.find('div[name="search-field"]').get('button').trigger('click');
 
     expect(store.getSearchQuery).toBe("Interstellar");
   });
@@ -38,7 +38,7 @@ describe('Banner', () => {
     const wrapper = mount(Banner);
     const store = useSearchStore();
 
-    await wrapper.find('.search-by').findAll('button')[0].trigger('click');
+    await wrapper.find('div[name="search-field"]').findAll('button')[0].trigger('click');
 
     expect(store.getSearchBy).toBe("title");
   });
@@ -48,7 +48,7 @@ describe('Banner', () => {
 
     const store = useSearchStore();
 
-    await wrapper.find('.search-by').findAll('button')[1].trigger('click');
+    await wrapper.find('div[name="search-by"]').findAll('button')[1].trigger('click');
 
     expect(store.getSearchBy).toBe("genre");
   });
