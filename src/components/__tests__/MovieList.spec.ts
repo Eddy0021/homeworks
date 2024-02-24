@@ -32,15 +32,22 @@ describe('MovieList', () => {
       });
     
       it('navigates to the movie details page when a movie card is clicked', async () => {
+        const mockRoute = {
+          params: {
+            id: 97
+          }
+        }
+
         const routerMock = {
           push: vi.fn(),
         };
     
         const wrapper = mount(MovieList, {
           global: {
-            mocks: {
-              $router: routerMock,
-            },
+           mocks: {
+              $route: mockRoute,
+              $router: routerMock
+            }
           },
         });
 
@@ -49,11 +56,7 @@ describe('MovieList', () => {
       const movieCard = wrapper.findComponent({ name: 'MovieCard' });
       await movieCard.trigger('click');
 
-      // Assuming you have access to the router in your component
-      const router = wrapper.vm.$router;
-
-      // Verify that the router navigated to the correct route
-      expect(router.currentRoute.value.name).toBe('movie');
-      expect(router.currentRoute.value.params.id).toBe(97); // Adjust the expected ID accordingly
+      expect(routerMock.push).toHaveBeenCalledTimes(1)
+      expect(routerMock.push).toHaveBeenCalledWith({ name: 'movie', params: { id: 97 } })
     });
 })
